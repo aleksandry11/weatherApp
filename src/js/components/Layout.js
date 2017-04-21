@@ -1,4 +1,3 @@
-
 import React from "react"
 import { connect } from "react-redux"
 import { Link } from "react-router"
@@ -49,7 +48,7 @@ class Layout extends React.Component {
   componentWillReceiveProps(props) {
     if(props.error) {
       this.setState({
-        error: props.error.status + props.error.statusText
+        error: `Error ${props.error.status}: ${props.error.statusText}`
       })
     } else {
       this.setState({error: ''});
