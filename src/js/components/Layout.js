@@ -7,6 +7,7 @@ import { fetchWeather } from "../actions/weatherActions"
 @connect((store) => {
     return {
         weather: store.weather.weather,
+        error: store.weather.error
     };
 })
 
@@ -16,7 +17,8 @@ class Layout extends React.Component {
 
     this.state = {
       value: '',
-      msg: ''
+      msg: '',
+      error: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,14 +28,16 @@ class Layout extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
+    
     if(!this.state.value) {
-      this.setState({msg: "Enter your city"});
+      this.setState({
+        error: "",
+        msg: "Enter your city"
+      });
     } else {
       this.setState({msg: ''})
-      this.props.dispatch(fetchWeather(this.state.value));
-    }
-    
+      this.props.dispatch(fetchWeather(this.state.value));      
+    }    
   }
 
   handleChange(event) {
@@ -68,7 +72,7 @@ class Layout extends React.Component {
                     <div className="form-goup">                      
                       <input type="text" placeholder="Your city..." value={this.state.value} onChange={this.handleChange} />
                     </div>
-                    <span class="alert">{this.state.msg}</span>
+                    <span class="alert">{this.state.msg} {this.state.error}</span>
                   </form>
               </div>
             </div>
