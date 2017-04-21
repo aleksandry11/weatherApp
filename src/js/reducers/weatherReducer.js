@@ -15,6 +15,7 @@ export default function reducer(state={
       case "FETCH_WEATHER_FULFILLED": {
         return {
           ...state,
+          error: false,
           fetching: false,
           fetched: true,
           weather: action.payload
