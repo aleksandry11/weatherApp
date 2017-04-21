@@ -1,3 +1,4 @@
+
 import React from "react"
 import { connect } from "react-redux"
 import { Link } from "react-router"
@@ -28,7 +29,7 @@ class Layout extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    
+
     if(!this.state.value) {
       this.setState({
         error: "",
@@ -37,15 +38,27 @@ class Layout extends React.Component {
     } else {
       this.setState({msg: ''})
       this.props.dispatch(fetchWeather(this.state.value));      
-    }    
+    }
+    
   }
 
   handleChange(event) {
     this.setState({value: event.target.value});
   }
 
+  componentWillReceiveProps(props) {
+    if(props.error) {
+      this.setState({
+        error: props.error.status + props.error.statusText
+      })
+    } else {
+      this.setState({error: ''});
+    }
+  }
+
   render() {
     let weather;
+
     if(!this.props.weather) {
 
     }
