@@ -10,6 +10,9 @@ body {
 .alert {
     color:red;
 }
+.yellow {
+    color: #ffed00;
+}
 .city-list {
     list-style-type: none;
     margin: 0 auto;
@@ -20,8 +23,12 @@ body {
     width: 100%;
     font-size: 16px;
     margin-bottom: 10px;
-    color: #000;
-    border-bottom: 1px solid #5ab5e9;
+    color: #deed37;
+    border: 1px solid #5ab5e9;
+    padding-top: 7px;
+}
+.city-item:hover {
+    background: rgba(90,181,233,.3);
 }
 .form {
     margin-bottom: 20px;
