@@ -18,7 +18,8 @@ class Layout extends React.Component {
     this.state = {
       value: '',
       msg: '',
-      error: ''
+      error: '',
+      margin: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,8 +36,9 @@ class Layout extends React.Component {
         msg: "Enter your city"
       });
     } else {
-      this.setState({msg: ''})
-      this.props.dispatch(fetchWeather(this.state.value));      
+      this.setState({msg: ''});
+      this.props.dispatch(fetchWeather(this.state.value));    
+      this.setState({margin: '15%'});  
     }
     
   }
@@ -67,7 +69,7 @@ class Layout extends React.Component {
             <Link to={`/city/${city.id}`} style={{ 
               color: 'white'
               }}>              
-                {city.name}, {city.sys.country}</Link> <img src={'http://openweathermap.org/images/flags/' + city.sys.country.toLowerCase() + '.png'}/> <br/>Temp: {city.main.temp} <img src={`http://openweathermap.org/img/w/${city.weather[0].icon}.png`}/> {city.weather[0].description}              
+                {city.name}, {city.sys.country}</Link> <img src={'http://openweathermap.org/images/flags/' + city.sys.country.toLowerCase() + '.png'}/> <br/>Temp: <span class="yellow">{city.main.temp}</span> <img src={`http://openweathermap.org/img/w/${city.weather[0].icon}.png`}/> {city.weather[0].description}              
             
           </li>          
       );
@@ -78,8 +80,8 @@ class Layout extends React.Component {
     return (
        <div class="container">
           <div class="row">
-              <div class="col-md-push-3 col-md-6 title weather">
-                  <h1>Weather in your city</h1>
+              <div class="col-md-push-3 col-md-6 weather title">
+                  <h1 style={{marginTop: this.state.margin}}>Weather in your city</h1>
                   <form onSubmit={this.handleSubmit} class="form form-inline">
                     <div className="form-goup">                      
                       <input type="text" placeholder="Your city..." value={this.state.value} onChange={this.handleChange} />
