@@ -5,26 +5,28 @@
 
 /* Landscape tablets and medium desktops */
 @media (min-width: 992px) and (max-width: 1199px) {
-
+	.weather h1 {
+		margin-top: 40%;
+	}
 }
 
 /* Portrait tablets and small desktops */
 @media (min-width: 768px) and (max-width: 991px) {
-    body {
-        background: #007399;
-    }
+	.weather h1 {
+		margin-top: 20%;
+	}
 }
 
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
- body {
-        background: #007399;
-    }
+	.weather h1 {
+		margin-top: 30%;
+	}
 }
 
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
- body {
-        background: #007399;
-    }
+	.weather h1 {
+		font-size: 36px;
+	}
 }
